@@ -6,7 +6,6 @@ class Header extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(right: 12, left: 12, top: 12),
       width: MediaQuery.of(context).size.width,
-      color: Color(0xfff6f7fa),
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
