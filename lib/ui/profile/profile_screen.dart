@@ -11,6 +11,15 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  List<String> data = [];
+  int index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    data = Data.furniture;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,19 +72,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text(
-                              "Gallery",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  index = 0;
+                                  data = Data.furniture;
+                                });
+                              },
+                              child: Text(
+                                "Collection",
+                                style: TextStyle(
+                                  color:
+                                      index == 0 ? Colors.black : Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
-                            Text(
-                              "Collection",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.grey,
-                                fontSize: 15,
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  index = 1;
+                                  data = Data.kendall;
+                                });
+                              },
+                              child: Text(
+                                "Gallery",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color:
+                                      index == 1 ? Colors.black : Colors.grey,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ],
@@ -86,12 +114,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisCount: 4,
                         padding: EdgeInsets.zero,
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: Data.furniture.length,
+                        itemCount: data.length,
                         itemBuilder: (BuildContext context, int index) =>
                             new Container(
                           child: FadeInImage.memoryNetwork(
                             placeholder: kTransparentImage,
-                            image: Data.furniture[index],
+                            image: data[index],
                           ),
                         ),
                         staggeredTileBuilder: (int index) =>

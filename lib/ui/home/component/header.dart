@@ -55,7 +55,7 @@ class Header extends StatelessWidget {
             ],
           ),
           SizedBox(height: 8),
-          Text("Create your best gallery today")
+          Text("Create your best collection today")
         ],
       ),
     );
