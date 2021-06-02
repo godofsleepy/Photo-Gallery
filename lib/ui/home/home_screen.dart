@@ -1,8 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:photo_gallery/data/data.dart';
+import 'package:photo_gallery/ui/ui.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 part 'component/header.dart';
@@ -21,27 +20,22 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Header(),
-            Container(
-              color: Colors.white,
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height / 2),
-              child: StaggeredGridView.countBuilder(
-                shrinkWrap: true,
-                crossAxisCount: 4,
-                padding: EdgeInsets.zero,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: Data.furniture.length,
-                itemBuilder: (BuildContext context, int index) => new Container(
-                  child: FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image: Data.furniture[index],
-                  ),
+            StaggeredGridView.countBuilder(
+              shrinkWrap: true,
+              crossAxisCount: 4,
+              padding: EdgeInsets.zero,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: Data.furniture.length,
+              itemBuilder: (BuildContext context, int index) => new Container(
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: Data.furniture[index],
                 ),
-                staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
-                mainAxisSpacing: 4.0,
-                crossAxisSpacing: 4.0,
               ),
-            )
+              staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
+              mainAxisSpacing: 4.0,
+              crossAxisSpacing: 4.0,
+            ),
           ],
         ),
       ),
